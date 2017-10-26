@@ -23,6 +23,9 @@ class Dropped(Processing):
         if self.task["category"] == "pcap":
             return dropped_files
 
+        if not os.path.isdir(self.dropped_path):
+            return dropped_files
+
         file_names = os.listdir(self.dropped_path)
         for file_name in file_names:
             file_path = os.path.join(self.dropped_path, file_name)
